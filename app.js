@@ -11,6 +11,7 @@ debug('NPM modules loaded');
 //endregion
 
 //region Dev module dependencies
+const config = require('./config');
 const index = require('./routes/index');
 const users = require('./routes/users');
 debug('Dev modules loaded');
@@ -64,7 +65,7 @@ debug('Express middleware error handler loaded');
 //endregion
 
 //region Https server
-const port = 3000;
+const port = config.get('http:port');
 const server = http.createServer(app);
 
 app.set('port', port);
