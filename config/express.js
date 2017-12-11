@@ -1,11 +1,11 @@
 //region NPM module dependencies
 
-const config = require('nconf');
+const config = require('nconf').get;
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const compress = require('compress');
+const compression = require('compression');
 const methodOverride = require('method-override');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // gzip compression
-app.use(compress());
+app.use(compression());
 
 // Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it
 app.use(methodOverride());
