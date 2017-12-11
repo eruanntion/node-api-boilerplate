@@ -2,6 +2,7 @@
 
 /**
  * Global config
+ * @public
  */
 const nconf = require('nconf');
 const path = require('path');
@@ -84,7 +85,7 @@ debug('default config file loaded');
 
 //region Set custom variables
 
-nconf.set('root_dir', path.join(__dirname, '../'));
+nconf.set('rootDir', path.join(__dirname, '../'));
 debug('Custom variables loaded into config');
 
 //endregion
@@ -99,6 +100,7 @@ nconf.required(['env', 'http:port']);
 
 /**
  * Global config
+ * @public
  */
 nconf.get = nconf.get.bind(nconf);
 

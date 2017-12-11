@@ -14,6 +14,7 @@ const debug = require('debug')('node-api-boilerplate:express');
 
 const index = require('../routes/index');
 const users = require('../routes/users');
+const error = require('../middlewares/error');
 
 //endregion
 
@@ -69,22 +70,13 @@ app.use('/users', users);
 //region Error handling
 
 // Catch 404 and forward to error handler
-app.use(function (req, res, next) {
-	const err = new Error('Not Found');
-	err.status = 404;
-	next(err);
-});
+app.use(error.notFound);
 
-//Error handler
-app.use(function (err, req, res, next) {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
+//If error is not an instanceOf APIError, convert it
+app.use(error.converter);
 
-	// render the error page
-	res.status(err.status || 500);
-	res.render('error');
-});
+// Error handler. Send stacktrace only during development
+app.use(error.handler);
 
 //endregion
 

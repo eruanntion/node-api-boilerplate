@@ -1,12 +1,15 @@
 //region Module dependencies
+
 const http = require('http'); // TODO https
+const debug = require('debug')('node-api-boilerplate:server');
 
 const config = require('./config/env').get;
 const app = require('./config/express');
-const debug = require('debug')('node-api-boilerplate:server');
+
 //endregion
 
 //region Https server
+
 const port = config('http:port');
 const server = http.createServer(app);
 
@@ -41,4 +44,5 @@ server.on('listening', () => {
 		: 'port ' + addr.port;
 	console.log('Listening on ' + bind);
 });
+
 //endregion
