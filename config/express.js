@@ -10,12 +10,7 @@ const methodOverride = require('method-override');
 const helmet = require('helmet');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-
 const debug = require('debug')('node-api-boilerplate:express');
-
-//endregion
-
-//region Developer's module dependencies
 
 const index = require('../routes/index');
 const users = require('../routes/users');
