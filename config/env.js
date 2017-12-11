@@ -1,12 +1,16 @@
-//region NPM module dependencies.
+//region NPM module dependencies
+/**
+ * Global config
+ */
 const nconf = require('nconf');
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('node-api-boilerplate:config');
-debug('NPM modules loaded');
 //endregion
 
+//region If not provided, set environment to development
 const env = (process.env.NODE_ENV || 'development').trim();
+//endregion
 
 //region Load commandline arguments and environment variables, respectively
 nconf.argv().env();
@@ -39,7 +43,7 @@ if (flags) {
 }
 //endregion
 
-//region Load an environment configuration data into the hierarchy.
+//region Load an environment configuration data into the hierarchy
 let env_file_path = `${__dirname}/environments/${env}.json`;
 
 if (!fs.existsSync(env_file_path)) {
@@ -53,7 +57,7 @@ nconf.file(env, {file: env_file_path});
 debug(env, 'config file loaded');
 //endregion
 
-//region Load default configuration data into the hierarchy.
+//region Load default configuration data into the hierarchy
 let default_file_path = `${__dirname}/environments/default.json`;
 
 if (!fs.existsSync(default_file_path)) {
@@ -73,6 +77,13 @@ debug('Custom variables loaded into config');
 
 //region Check if everything is loaded
 nconf.required(['env', 'http:port']);
+//endregion
+
+//region Bind get method to nconf, so you can use short notation
+/**
+ * Global config
+ */
+nconf.get = nconf.get.bind(nconf);
 //endregion
 
 module.exports = nconf;

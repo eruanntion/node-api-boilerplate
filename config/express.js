@@ -6,21 +6,25 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')('node-api-boilerplate:express');
-debug('NPM modules loaded');
 //endregion
 
-//region Dev module dependencies
+//region Developer's module dependencies
 const index = require('../routes/index');
 const users = require('../routes/users');
-debug('Dev modules loaded');
 //endregion
 
+//region Express instance
+/**
+ * Express instance
+ * @public
+ * @type {Object}
+ */
 const app = express();
+//endregion
 
 //region View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-debug('View engine setup finished');
 //endregion
 
 //region Express middleware setup

@@ -1,13 +1,13 @@
 //region Module dependencies
 const http = require('http'); // TODO https
 
-const config = require('./config/env');
+const config = require('./config/env').get;
 const app = require('./config/express');
 const debug = require('debug')('node-api-boilerplate:server');
 //endregion
 
 //region Https server
-const port = config.get('http:port');
+const port = config('http:port');
 const server = http.createServer(app);
 
 app.set('port', port);
