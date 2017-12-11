@@ -1,19 +1,17 @@
-//region NPM module dependencies.
+//region NPM module dependencies
 const express = require('express');
-const http = require('http'); // TODO https
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const debug = require('debug')('node-api-boilerplate:server');
+const debug = require('debug')('node-api-boilerplate:express');
 debug('NPM modules loaded');
 //endregion
 
 //region Dev module dependencies
-const config = require('./config');
-const index = require('./routes/index');
-const users = require('./routes/users');
+const index = require('../routes/index');
+const users = require('../routes/users');
 debug('Dev modules loaded');
 //endregion
 
@@ -64,41 +62,4 @@ app.use(function (err, req, res, next) {
 debug('Express middleware error handler loaded');
 //endregion
 
-//region Https server
-const port = config.get('http:port');
-const server = http.createServer(app);
-
-app.set('port', port);
-server.listen(port);
-debug('HTTP server created');
-
-server.on('error', (error) => {
-	if (error.syscall !== 'listen') {
-		throw error;
-	}
-
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-		case 'EACCES':
-			console.error(port + ' requires elevated privileges');
-			process.exit(1);
-			break;
-		case 'EADDRINUSE':
-			console.error(port + ' is already in use');
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
-});
-
-server.on('listening', () => {
-	var addr = server.address();
-	var bind = typeof addr === 'string'
-		? 'pipe ' + addr
-		: 'port ' + addr.port;
-	console.log('Listening on ' + bind);
-});
-//endregion
-
-
+module.exports = app;

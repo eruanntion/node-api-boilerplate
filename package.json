@@ -1,18 +1,24 @@
 {
-  "name": "node-api-boilerplate",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "ejs": "~2.5.7",
-    "express": "~4.15.5",
-    "morgan": "~1.9.0",
-    "nconf": "^0.9.1",
-    "serve-favicon": "~2.4.5"
-  }
+	"name": "node-api-boilerplate",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"start": "cross-env NODE_ENV=production node server.js",
+		"start:debug": "cross-env DEBUG=node-api-boilerplate:* npm start",
+		"start:sandboxed": "npm start -- --flag=sandbox",
+		"dev": "nodemon server.js",
+		"dev:debug": "cross-env DEBUG=node-api-boilerplate:* npm run dev",
+		"dev:sandboxed": "npm run dev -- --flag=sandbox"
+	},
+	"dependencies": {
+		"body-parser": "~1.18.2",
+		"cookie-parser": "~1.4.3",
+		"cross-env": "^5.1.1",
+		"debug": "~2.6.9",
+		"ejs": "~2.5.7",
+		"express": "~4.15.5",
+		"morgan": "~1.9.0",
+		"nconf": "^0.9.1",
+		"serve-favicon": "~2.4.5"
+	}
 }

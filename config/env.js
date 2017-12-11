@@ -33,12 +33,13 @@ if (flags) {
 		}
 
 		nconf.file(flag, {file: flag_file_path});
+		console.log('Sandbox config loaded');
 		debug(flag, 'config file loaded');
 	});
 }
 //endregion
 
-//region Load the environment configuration data into the hierarchy.
+//region Load an environment configuration data into the hierarchy.
 let env_file_path = `${__dirname}/environments/${env}.json`;
 
 if (!fs.existsSync(env_file_path)) {
@@ -52,8 +53,8 @@ nconf.file(env, {file: env_file_path});
 debug(env, 'config file loaded');
 //endregion
 
-//region Load the environment configuration data into the hierarchy.
-let default_file_path = `${__dirname}/default.json`;
+//region Load default configuration data into the hierarchy.
+let default_file_path = `${__dirname}/environments/default.json`;
 
 if (!fs.existsSync(default_file_path)) {
 	console.error(`\nCONFIGURATION LOADING ERROR: missing file "${default_file_path}"`
@@ -68,6 +69,10 @@ debug('default config file loaded');
 //region Set custom variables
 nconf.set('root_dir', path.join(__dirname, '../'));
 debug('Custom variables loaded into config');
+//endregion
+
+//region Check if everything is loaded
+nconf.required(['env', 'http:port']);
 //endregion
 
 module.exports = nconf;
