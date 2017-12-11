@@ -3,6 +3,7 @@
 
 	"http": {
 		"port": 3000,
-		"host": "localhost"
+		"host": "localhost",
+		"logs": "dev"
 	}
 }
