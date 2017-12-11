@@ -35,16 +35,16 @@ if (flags) {
 	}
 
 	flags.forEach((flag) => {
-		let flag_file_path = `${__dirname}/flags/${flag}.json`;
+		let flagFilePath = `${__dirname}/flags/${flag}.json`;
 
-		if (!fs.existsSync(flag_file_path)) {
-			console.error(`\nCONFIGURATION LOADING ERROR: missing file "${flag_file_path}"`
+		if (!fs.existsSync(flagFilePath)) {
+			console.error(`\nCONFIGURATION LOADING ERROR: missing file "${flagFilePath}"`
 				, `\nConfiguration loading failed while trying to load config file for "${flag}" flag.`
 				, '\nPlease check if you provided the correct flag name.');
 			process.exit(1);
 		}
 
-		nconf.file(flag, {file: flag_file_path});
+		nconf.file(flag, {file: flagFilePath});
 		console.log('Sandbox config loaded');
 		debug(flag, 'config file loaded');
 	});
@@ -54,31 +54,31 @@ if (flags) {
 
 //region Load an environment configuration data into the hierarchy
 
-let env_file_path = `${__dirname}/environments/${env}.json`;
+let envFilePath = `${__dirname}/environments/${env}.json`;
 
-if (!fs.existsSync(env_file_path)) {
-	console.error(`\nCONFIGURATION LOADING ERROR: missing file "${env_file_path}"`
+if (!fs.existsSync(envFilePath)) {
+	console.error(`\nCONFIGURATION LOADING ERROR: missing file "${envFilePath}"`
 		, `\nConfig loading failed while trying to load config file for "${env}" environment.`
 		, '\nPlease check if you provided the correct environment name.');
 	process.exit(1);
 }
 
-nconf.file(env, {file: env_file_path});
+nconf.file(env, {file: envFilePath});
 debug(env, 'config file loaded');
 
 //endregion
 
 //region Load default configuration data into the hierarchy
 
-let default_file_path = `${__dirname}/environments/default.json`;
+let defaultFilePath = `${__dirname}/environments/default.json`;
 
-if (!fs.existsSync(default_file_path)) {
-	console.error(`\nCONFIGURATION LOADING ERROR: missing file "${default_file_path}"`
+if (!fs.existsSync(defaultFilePath)) {
+	console.error(`\nCONFIGURATION LOADING ERROR: missing file "${defaultFilePath}"`
 		, `\nConfig loading failed while trying to load default config file.`);
 	process.exit(1);
 }
 
-nconf.file('default', {file: default_file_path});
+nconf.file('default', {file: defaultFilePath});
 debug('default config file loaded');
 
 //endregion
