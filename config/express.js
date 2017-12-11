@@ -1,6 +1,5 @@
 //region NPM module dependencies
 
-const config = require('nconf').get;
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -12,6 +11,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const debug = require('debug')('node-api-boilerplate:express');
 
+const config = require('../config');
 const index = require('../routes/index');
 const users = require('../routes/users');
 const error = require('../middlewares/error');

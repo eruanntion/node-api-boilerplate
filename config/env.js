@@ -106,4 +106,4 @@ nconf.get = nconf.get.bind(nconf);
 
 //endregion
 
-module.exports = nconf;
+module.exports = nconf.get;

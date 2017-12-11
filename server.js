@@ -3,7 +3,7 @@
 const http = require('http'); // TODO https
 const debug = require('debug')('node-api-boilerplate:server');
 
-const config = require('./config/env').get;
+const config = require('./config');
 const app = require('./config/express');
 
 //endregion
