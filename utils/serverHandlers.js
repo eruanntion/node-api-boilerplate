@@ -27,8 +27,8 @@ exports.onError = error => {
  * on listening event handler
  * @public
  */
-exports.onListening = () => {
-	let address = server.address();
+exports.onListening = function() {
+	let address = this.address();
 	let bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + address.port;
 	console.log('Listening on ' + bind);
 };

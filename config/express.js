@@ -1,4 +1,4 @@
-//region NPM module dependencies
+//region Module dependencies
 
 const express = require('express');
 const path = require('path');
@@ -12,8 +12,7 @@ const cookieParser = require('cookie-parser');
 const debug = require('debug')('node-api-boilerplate:express');
 
 const config = require('../config');
-const index = require('../routes/index');
-const users = require('../routes/users');
+const routes = require('../routes');
 const error = require('../middlewares/error');
 
 //endregion
@@ -55,15 +54,8 @@ app.use(cookieParser());
 // Serve static files under public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//endregion
-
-//region Mount routes
-
-// Mount index route
-app.use('/', index);
-
-// Mount users route
-app.use('/users', users);
+// Mount routes
+app.use('/v:version', routes);
 
 //endregion
 

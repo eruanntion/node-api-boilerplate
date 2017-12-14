@@ -1,1 +1,4 @@
-{}
+{
+	"minSupportedAPIVersion": 1.0,
+	"maxSupportedAPIVersion": 2.0
+}

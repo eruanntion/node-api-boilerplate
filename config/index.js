@@ -1,3 +1,3 @@
-const config =  require('./env');
+const config =  require('./nconf');
 
 module.exports = config;

@@ -6,7 +6,7 @@
 		"start": "cross-env NODE_ENV=production node server.js",
 		"start:debug": "cross-env DEBUG=node-api-boilerplate:* npm start",
 		"start:sandboxed": "npm start -- --flag=sandbox",
-		"dev": "nodemon server.js",
+		"dev": "nodemon -L server.js",
 		"dev:debug": "cross-env DEBUG=node-api-boilerplate:* npm run dev",
 		"dev:sandboxed": "npm run dev -- --flag=sandbox"
 	},

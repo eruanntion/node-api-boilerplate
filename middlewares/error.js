@@ -2,8 +2,8 @@
 
 const httpStatus = require('http-status');
 const expressValidation = require('express-validation');
-const config = require('nconf').get;
 
+const config = require('../config');
 const APIError = require('../utils/APIError');
 
 //endregion
@@ -13,6 +13,9 @@ const APIError = require('../utils/APIError');
 /**
  * Catch 404 and forward to error handler
  * @public
+ * @param req
+ * @param res
+ * @param next
  */
 exports.notFound = (req, res, next) => {
 	const err = new APIError({
@@ -23,8 +26,29 @@ exports.notFound = (req, res, next) => {
 };
 
 /**
+ * Throws unsupported API version
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.unsupportedAPIVersion = (req, res, next) => {
+	const err = new APIError({
+		message: 'Unsupported API version',
+		status: httpStatus.BAD_REQUEST,
+		errors: [{
+			minSupportedAPIVersion: config('minSupportedAPIVersion'),
+			maxSupportedAPIVersion: config('maxSupportedAPIVersion')
+		}]
+	});
+	next(err);
+};
+
+/**
  * If error is not an instanceOf APIError, convert it
  * @public
+ * @param req
+ * @param res
+ * @param next
  */
 exports.converter = (err, req, res, next) => {
 	let convertedError = err;
@@ -50,6 +74,10 @@ exports.converter = (err, req, res, next) => {
 /**
  * Error handler. Send stacktrace only during development
  * @public
+ * @param err
+ * @param req
+ * @param res
+ * @param next
  */
 exports.handler = (err, req, res, next) => {
 	const response = {
