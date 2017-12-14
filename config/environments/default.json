@@ -1,4 +1,6 @@
 {
-	"minSupportedAPIVersion": 1.0,
-	"maxSupportedAPIVersion": 2.0
+	"api": {
+		"supportedVersions": ["v1", "v2"]
+	}
+
 }

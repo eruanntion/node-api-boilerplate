@@ -25,23 +25,6 @@ exports.notFound = (req, res, next) => {
 	next(err);
 };
 
-/**
- * Throws unsupported API version
- * @param req
- * @param res
- * @param next
- */
-exports.unsupportedAPIVersion = (req, res, next) => {
-	const err = new APIError({
-		message: 'Unsupported API version',
-		status: httpStatus.BAD_REQUEST,
-		errors: [{
-			minSupportedAPIVersion: config('minSupportedAPIVersion'),
-			maxSupportedAPIVersion: config('maxSupportedAPIVersion')
-		}]
-	});
-	next(err);
-};
 
 /**
  * If error is not an instanceOf APIError, convert it

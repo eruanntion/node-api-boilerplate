@@ -55,7 +55,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routes
-app.use('/v:version', routes);
+app.use(routes);
 
 //endregion
 
