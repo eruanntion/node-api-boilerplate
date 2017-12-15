@@ -5,7 +5,7 @@ const debug = require('debug')('node-api-boilerplate:server');
 
 const config = require('./config');
 const app = require('./config/express');
-const serverHandlers = require('./utils/serverHandlers');
+const serverHandlers = require('./utils/server-handlers');
 
 //endregion
 

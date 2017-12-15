@@ -1,12 +1,12 @@
 //region Module dependencies
 
 const express = require('express');
-const router = express.Router({mergeParams: true});
+const router = express.Router();
 const fs = require('fs');
 const debug = require('debug')('node-api-boilerplate:routes:index');
 
 const config = require('../config');
-const {check} = require('../middlewares/apiVersion');
+const {check} = require('../middlewares/api-version');
 
 //endregion
 
@@ -26,7 +26,7 @@ config('api:supportedVersions').forEach(version => {
 		items.forEach(item => {
 			let name = item.replace('Route.js', '');
 
-			router.all(`/${version}`, require(`../controllers/${version}/statusController`).get);
+			router.all(`/${version}`, require(`../controllers/${version}/status-controller`).get);
 			router.use(`/${version}/${name}`, require(`./${version}/${item}`));
 			debug(`/routes/${version}/${item} loaded`);
 		})

@@ -4,7 +4,7 @@ const httpStatus = require('http-status');
 const expressValidation = require('express-validation');
 
 const config = require('../config');
-const APIError = require('../utils/APIError');
+const APIError = require('../utils/api-error');
 
 //endregion
 
