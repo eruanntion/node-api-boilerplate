@@ -20,6 +20,7 @@
 		"ejs": "~2.5.7",
 		"express": "~4.15.5",
 		"express-validation": "^1.0.2",
+		"find": "^0.2.7",
 		"helmet": "^3.9.0",
 		"http-status": "^1.0.1",
 		"joi": "^13.0.2",

@@ -12,8 +12,8 @@ const cookieParser = require('cookie-parser');
 const debug = require('debug')('node-api-boilerplate:express');
 
 const config = require('../config');
-const routes = require('../routes');
-const error = require('../middlewares/error');
+const routes = require('../api');
+const error = require('../middlewares/error.middleware');
 
 //endregion
 

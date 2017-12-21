@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../../controllers/v1/users-controller');
+const users = require('./users.controller');
 
 //endregion
 
@@ -30,7 +30,7 @@ router
 	 * @apiError (Unauthorized 401)  Unauthorized  Only authenticated users can access the data
 	 * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
 	 */
-	.get(controller.list)
+	.get(users.list)
 	/**
 	 * @api {post} v1/users Create User
 	 * @apiDescription Create a new user
@@ -56,6 +56,6 @@ router
 	 * @apiError (Unauthorized 401)  Unauthorized     Only authenticated users can create the data
 	 * @apiError (Forbidden 403)     Forbidden        Only admins can create the data
 	 */
-	.post(controller.create);
+	.post(users.create);
 
 module.exports = router;

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Validations" pattern="file:*.validation.js" />
+</component>
