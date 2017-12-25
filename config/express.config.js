@@ -13,7 +13,7 @@ const debug = require('debug')('node-api-boilerplate:express');
 
 const config = require('../config');
 const routes = require('../api');
-const error = require('../middlewares/error.middleware');
+const error = require('../middlewares/error');
 
 //endregion
 

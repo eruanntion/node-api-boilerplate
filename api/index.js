@@ -7,7 +7,7 @@ const find = require('find');
 const debug = require('debug')('node-api-boilerplate:routes:index');
 
 const config = require('../config');
-const apiVersion = require('../middlewares/api-version.middleware');
+const apiVersion = require('../middlewares/api-version');
 
 //endregion
 
