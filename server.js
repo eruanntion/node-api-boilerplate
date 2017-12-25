@@ -4,7 +4,7 @@ const http = require('http');
 const debug = require('debug')('node-api-boilerplate:server');
 
 const config = require('./config');
-const app = require('./config/express.config');
+const app = require('./config/express');
 const serverEventHandlers = require('./utils/server-event-handlers');
 
 //endregion
