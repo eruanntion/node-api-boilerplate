@@ -3,8 +3,8 @@
 const httpStatus = require('http-status');
 const expressValidation = require('express-validation');
 
-const config = require('../config');
-const APIError = require('../utils/api-error');
+const config = require('../index');
+const APIError = require('./api-error');
 
 //endregion
 

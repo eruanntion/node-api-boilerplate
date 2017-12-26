@@ -11,9 +11,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const debug = require('debug')('node-api-boilerplate:express');
 
-const config = require('../config');
-const routes = require('../api');
-const error = require('../middlewares/error');
+const config = require('../index');
+const routes = require('../../api/index');
+const error = require('./error.middleware');
 
 //endregion
 
@@ -24,10 +24,6 @@ const error = require('../middlewares/error');
 const app = express();
 
 //region Express middlewares setup
-
-// View engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // Request logging. dev: console | production: file
 app.use(logger(config('http:logs')));
