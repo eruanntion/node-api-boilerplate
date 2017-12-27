@@ -1,14 +1,15 @@
 {
 	"name": "node-api-boilerplate",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"start": "cross-env NODE_ENV=production node server.js",
-		"start:debug": "cross-env DEBUG=node-api-boilerplate:* npm start",
-		"start:sandboxed": "npm start -- --flag=sandbox",
-		"dev": "nodemon -L server.js",
-		"dev:debug": "cross-env DEBUG=node-api-boilerplate:* npm run dev",
-		"dev:sandboxed": "npm run dev -- --flag=sandbox"
+		"start-debug": "cross-env DEBUG=node-api-boilerplate:* npm start",
+		"start-sandboxed": "npm start -- --flag=sandbox",
+		"dev": "nodemon server.js",
+		"dev-debug": "cross-env DEBUG=node-api-boilerplate:* npm run dev",
+		"dev-sandboxed": "npm run dev -- --flag=sandbox",
+		"test": "nodemon --exec \"mocha **/*.test.js\""
 	},
 	"dependencies": {
 		"body-parser": "~1.18.2",
@@ -29,5 +30,9 @@
 		"morgan": "~1.9.0",
 		"nconf": "^0.9.1",
 		"serve-favicon": "~2.4.5"
+	},
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"mocha": "^4.0.1"
 	}
 }
