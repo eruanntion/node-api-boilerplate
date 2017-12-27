@@ -1,0 +1,1 @@
+module.exports = moduleExtractor.extract(__dirname);

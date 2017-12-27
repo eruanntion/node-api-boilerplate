@@ -1,1 +1,1 @@
-module.exports = require('../../../helpers/module-extractor').extract(__dirname);
+module.exports = ModuleExtractor.extract(__dirname);
