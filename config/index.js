@@ -5,5 +5,5 @@ const config =  require('./nconf');
 
 //endregion
 
-
-module.exports = config;
+// Export get method directly for nicer & shorter syntax
+module.exports = config.get;
